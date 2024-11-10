@@ -1,0 +1,18 @@
+clc;
+n=input('enter the no of output bits :-');
+g1=input('enter the 1st generation function :-');
+g2=input('enter the 2nd generation function :-');
+g3=input('enter the 3rd generation function :-');
+K=input('enter the constrating length:-');
+L=input('enter the no of msg bits :-');
+m=input('enter the message :-');
+a1=num2str(g1);
+c1=num2str(dec2base(bin2dec(a1),8));
+a2=num2str(g2);
+c2=num2str(dec2base(bin2dec(a2),8));
+a3=num2str(g3);
+c3=num2str(dec2base(bin2dec(a3),8));
+ms=[m zeros(1,(K-1))];
+c=[c1 c2 c3];
+trel=poly2trellis(K,c);
+code=convenc(ms,trel);
